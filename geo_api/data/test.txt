@@ -1,0 +1,35 @@
+geonameid	name	asciiname	alternatenames	latitude	longitude	feature class	feature code	country code	cc2	a1	a2	a3	a4	population	elevation	dem	time zone	modification date
+451747	Zyabrikovo	Zyabrikovo		56.84665	34.7048	P	PPL	RU		77				0		204	Europe/Moscow	2011-07-09
+451748	Znamenka	Znamenka		56.74087	34.02323	P	PPL	RU		77				0		215	Europe/Moscow	2011-07-09
+451749	Zhukovo	Zhukovo		57.26429	34.20956	P	PPL	RU		77				0		237	Europe/Moscow	2011-07-09
+451750	Zhitovo	Zhitovo		57.29693	34.41848	P	PPL	RU		77				0		247	Europe/Moscow	2011-07-09
+451751	Zhitnikovo	Zhitnikovo		57.20064	34.57831	P	PPL	RU		77				0		198	Europe/Moscow	2011-07-09
+451752	Zhelezovo	Zhelezovo		57.02591	34.51886	P	PPL	RU		77				0		192	Europe/Moscow	2011-07-09
+451753	Zelëntsyno	Zelentsyno		56.73452	34.92011	P	PPL	RU		77				0		159	Europe/Moscow	2011-07-09
+451754	Zelënaya Niva	Zelenaya Niva		57.1711	34.76977	P	PPL	RU		77				0		160	Europe/Moscow	2011-07-09
+451755	Zasten’ye	Zasten'ye		57.27055	34.73	P	PPL	RU		77				0		184	Europe/Moscow	2011-07-09
+451756	Zarech’ye	Zarech'ye		56.68265	34.70984	P	PPL	RU		77				0		178	Europe/Moscow	2011-07-09
+451757	Zamush’ye	Zamush'ye		57.22984	34.77983	P	PPL	RU		77				0		182	Europe/Moscow	2011-07-09
+451758	Zaleden’ye	Zaleden'ye		57.12851	34.26788	P	PPLQ	RU		77				0		278	Europe/Moscow	2011-07-09
+451759	Urochishche Zakaznik	Urochishche Zakaznik		56.89212	34.56952	L	LCTY	RU		77				0		219	Europe/Moscow	2011-07-09
+451760	Zador’ye	Zador'ye		56.85239	34.49864	P	PPL	RU		77				0		224	Europe/Moscow	2011-07-09
+451761	Zabolot’ye	Zabolot'ye		56.74771	34.84792	P	PPL	RU		77				0		190	Europe/Moscow	2011-07-09
+451762	Yeskino	Yeskino		57.07916	34.78913	P	PPL	RU		77				0		189	Europe/Moscow	2011-07-09
+451763	Yereshkino	Yereshkino		57.22681	34.58422	P	PPL	RU		77				0		218	Europe/Moscow	2011-07-09
+451764	Yeremeyki	Yeremeyki		56.81639	34.92389	P	PPL	RU		77				0		160	Europe/Moscow	1998-05-01
+451765	Yelizavetino	Yelizavetino		56.7813	34.49321	P	PPL	RU		77				0		242	Europe/Moscow	2011-07-09
+451766	Urochishche Yegur’yevo	Urochishche Yegur'yevo		57.17701	34.47458	L	LCTY	RU		77				0		273	Europe/Moscow	2011-07-09
+451851	Sidorovo	Sidorovo	Sidorovo,Сидорово	57.21631	34.38399	P	PPL	RU		77				0		237	Europe/Moscow	2012-01-16
+451852	Shuvalov	Shuvalov	Shuvalov,Шувалов	56.94284	34.44036	P	PPL	RU		77				0		219	Europe/Moscow	2012-01-16
+451853	Shchilovo	Shchilovo	Shchilovo,Shhilovo,Щилово	57.00782	34.56777	P	PPL	RU		77				0		184	Europe/Moscow	2012-01-16
+451854	Shchemelinino	Shchemelinino	Shchemelinino,Shhemelinino,Щемелинино	56.82786	34.84024	P	PPL	RU		77				0		166	Europe/Moscow	2012-01-16
+451855	Shchelenka	Shchelenka	Shchelenka,Shhelenka,Щеленка	57.05827	34.14452	H	STM	RU		77				0		231	Europe/Moscow	2012-01-16
+451856	Shchegolevo	Shchegolevo	Shchegolevo,Shhegolevo,Щеголево	56.89742	34.44873	P	PPL	RU		77				0		199	Europe/Moscow	2012-01-16
+451857	Shashkovo	Shashkovo	Shashkovo,Шашково	57.19123	34.28458	P	PPL	RU		77				0		227	Europe/Moscow	2012-01-16
+451858	Shaplovo	Shaplovo	Shaplovo,Шаплово	56.91831	34.30227	P	PPL	RU		77				0		235	Europe/Moscow	2012-01-16
+451859	Severnaya Ryasnya	Severnaya Ryasnya	Severnaja Rjasnja,Severnaya Ryasnya,Северная Рясня	56.78838	34.21927	H	STM	RU		77				0		230	Europe/Moscow	2012-01-16
+451860	Senchukovo	Senchukovo	Senchukovo,Сенчуково	56.67127	34.76237	P	PPL	RU		77				0		171	Europe/Moscow	2012-01-16
+451861	Semyn’	Semyn'	Semyn',Semyn’,Семынь	57.18168	34.28542	H	STM	RU		77				0		214	Europe/Moscow	2012-01-16
+451862	Selino	Selino	Selino,Селино	56.9928	34.53119	P	PPL	RU		77				0		185	Europe/Moscow	2012-01-16
+451864	Selikhovo	Selikhovo	Selikhovo,Селихово	57.03465	34.64079	P	PPL	RU		77				0		188	Europe/Moscow	2012-01-16
+451865	Sanatoriy Mitino	Sanatoriy Mitino	Sanatorij Mitino,Sanatoriy Mitino,Санаторий Митино	57.10048	34.97636	S	SNTR	RU		77				0		164	Europe/Moscow	2012-01-16
