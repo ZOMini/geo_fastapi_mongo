@@ -28,7 +28,7 @@ class GeoModel(BaseModel):
     # gpa: float = Field(..., le=4.0)
     geo_name_id: int = Field(...)
     name: str = Field(...)
-    ru_name: Union[str, None] = Field(...)
+    ru_name: str = Field(...)
     latitude: float = Field(ge=-90.0,
                             le=90.0,
                             title='Широта',

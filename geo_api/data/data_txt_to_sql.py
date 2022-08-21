@@ -1,7 +1,6 @@
 import pandas as pd
 import var_geo
-from models import GeoObj
-from redis_om import Migrator
+from geo_api.models import GeoModel
 
 
 def run():
@@ -13,8 +12,7 @@ def run():
                     keep_default_na=False)
     df_dict:dict = df.to_dict('index')
     suc = fau = 0
-    Migrator().run()
-    city = GeoObj(
+    city = GeoModel(
                 geo_name_id = 111111111,
                 name = "sadasdasd",
                 ru_name = "sdasdasdasd",
