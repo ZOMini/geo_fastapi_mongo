@@ -28,7 +28,7 @@ async def create_geo(geo: GeoModel = Body(...)):
          response_description="List all geo",
          response_model=List[GeoModel])
 async def list_geo():
-    geo = await db["geo"].find().to_list(1000)
+    geo = await db["geo"].find().to_list(100)
     return geo
 
 
@@ -76,7 +76,7 @@ async def geo_coor(lati_min: float,
     return geo
 
 @app.get("/two_cites/",
-         response_description="Get a single geo by GeoNameID",
+         response_description="Two geo object + northen object + equal time zone",
          response_model=Union[List[GeoModel], List[Dict]],
          responses={404: {'detail': 'Not Found'}})
 async def two_cites(geo_1: str, geo_2: str):
@@ -89,6 +89,20 @@ async def two_cites(geo_1: str, geo_2: str):
     extra = [{"northen object": north_object, "equal time zone": tz + delta}]
     return JSONResponse(geo_1 + geo_2 + extra)
 
+@app.get("/search/",
+         response_description="List search ru name geo",
+         response_model=List)
+async def search(search: str):
+    search = "\A" + search + ".*"
+    # geo = await db["geo"].find({"$text": {"$search": search, "$language": "ru"}}).to_list(10)
+    # geo = await db["geo"].find({"$or": [{"$text": {"$search": search, "$language": "ru"}}, {"ru_name": {"$regex": search}}]}).to_list(10)
+    geo = await db["geo"].find({"ru_name": {"$regex": search}}).to_list(20)
+    list_ru_name = []
+    for ge in geo:
+        list_ru_name.append(ge['ru_name'])
+    list_ru_name = set(list_ru_name)
+    return list_ru_name
 
-# if __name__ == "__main__":
-#     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

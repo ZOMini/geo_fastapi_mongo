@@ -22,25 +22,21 @@ class PyObjectId(ObjectId):
 
 class GeoModel(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
-    # name: str = Field(...)
-    # email: EmailStr = Field(...)
-    # course: str = Field(...)
-    # gpa: float = Field(..., le=4.0)
     geo_name_id: int = Field(...)
     name: str = Field(...)
-    ru_name: str = Field(...)
-    latitude: float = Field(ge=-90.0,
-                            le=90.0,
+    ru_name: Union[str, None] = Field(...)
+    latitude: float = Field(gt=-90.0,
+                            lt=90.0,
                             title='Широта',
                             description='от -90 до +90')
-    longitude: float = Field(ge=-180.0,
-                            le=180.0,
+    longitude: float = Field(gt=-180.0,
+                            lt=180.0,
                             title='Долгота',
                             description='от -180 до +180')
-    population: Union[int, None] = Field(ge=0,
+    population: Union[int, None] = Field(gt=-1,
                                          title='Население',
                                          description='больше 0')
-    dem: Union[int, None] = Field(ge=0,
+    dem: Union[int, None] = Field(gt=-1,
                                   title='Площадь в м',
                                   description='больше 0')
     time_zone: Union[str, None] = Field(title='Таймзона',
