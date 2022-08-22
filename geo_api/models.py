@@ -30,9 +30,9 @@ class GeoModel(BaseModel):
                             title='Широта',
                             description='от -90 до +90')
     longitude: float = Field(gt=-180.0,
-                            lt=180.0,
-                            title='Долгота',
-                            description='от -180 до +180')
+                             lt=180.0,
+                             title='Долгота',
+                             description='от -180 до +180')
     population: Union[int, None] = Field(gt=-1,
                                          title='Население',
                                          description='больше 0')
@@ -42,7 +42,7 @@ class GeoModel(BaseModel):
     time_zone: Union[str, None] = Field(title='Таймзона',
                                         description='datetime.tzinfo')
     mod_date: Union[str, None] = Field(title='Дата модификации',
-                                                 description='ГГГГ-ММ-ДД')
+                                       description='ГГГГ-ММ-ДД')
     class Config:
         allow_population_by_field_name = True
         arbitrary_types_allowed = True

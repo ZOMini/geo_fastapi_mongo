@@ -22,7 +22,8 @@ async def create_geo(geo: GeoModel = Body(...)):
     geo = jsonable_encoder(geo)
     new_geo = await db["geo"].insert_one(geo)
     created_geo = await db["geo"].find_one({"_id": new_geo.inserted_id})
-    return JSONResponse(status_code=status.HTTP_201_CREATED, content=created_geo)
+    return JSONResponse(status_code=status.HTTP_201_CREATED,
+                        content=created_geo)
 
 @app.get("/test/",
          response_description="List all geo",
@@ -39,7 +40,8 @@ async def show_geo(id: str):
     if (geo := await db["geo"].find_one({"_id": id})) is not None:
         return geo
 
-    raise HTTPException(status_code=404, detail=f"Geo {id} not found")
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                        detail=f"Geo {id} not found")
 
 @app.delete("/test/{id}", response_description="Delete a geo")
 async def delete_geo(id: str):
@@ -52,16 +54,19 @@ async def delete_geo(id: str):
 
 @app.get("/geonameid/{geo_name_id}/",
          response_description="Get a single geo by GeoNameID",
-         response_model=GeoModel)
+         response_model=GeoModel,
+         responses={404: {"detail": "Geo <geo_name_id> not found"}})
 async def show_geonameid(geo_name_id: int):
-    if (geo := await db["geo"].find_one({"geo_name_id": geo_name_id})) is not None:
+    if (geo := await db["geo"]
+        .find_one({"geo_name_id": geo_name_id})) is not None:
         return geo
-    raise HTTPException(status_code=404, detail=f"Geo {geo_name_id} not found")
+    raise HTTPException(status_code=404,
+                        detail=f"Geo {geo_name_id} not found")
 
 @app.get("/coordinates/",
          response_description="Get a single geo by GeoNameID",
          response_model=List[GeoModel],
-         responses={404: {'detail': 'Not Found'}})
+         responses={404: {'detail': 'Geo on this coordinate not found'}})
 async def geo_coor(lati_min: float,
                    lati_max: float,
                    longi_min: float,
@@ -72,18 +77,26 @@ async def geo_coor(lati_min: float,
                "longitude":{"$lt":longi_max,"$gt":longi_min}})
         .to_list(cont))
     if len(geo) == 0:
-        raise HTTPException(status_code=404, detail=f"Geo on this coordinate not found")
+        raise HTTPException(status_code=404,
+                            detail=f"Geo on this coordinate not found")
     return geo
 
-@app.get("/two_cites/",
-         response_description="Two geo object + northen object + equal time zone",
-         response_model=Union[List[GeoModel], List[Dict]],
-         responses={404: {'detail': 'Not Found'}})
+@app.get(
+    "/two_cites/",
+    response_description="Two geo object + northen object + equal time zone",
+    response_model=Union[List[GeoModel], List[Dict]],
+    responses={404: {'detail': 'geo_1 or geo_2 is empty'}}
+    )
 async def two_cites(geo_1: str, geo_2: str):
-    geo_1 = await db["geo"].find({"ru_name": geo_1}).sort("-population").to_list(1)
-    geo_2 = await db["geo"].find({"ru_name": geo_2}).sort("population").to_list(1)
+    geo_1 = await (db["geo"].find({"ru_name": geo_1})
+                            .sort("-population")
+                            .to_list(1))
+    geo_2 = await (db["geo"].find({"ru_name": geo_2})
+                            .sort("population")
+                            .to_list(1))
     if len(geo_1) == 0 or len(geo_2) == 0:
-        raise HTTPException(status_code=404, detail=f"geo_1 or geo_2 is empty")
+        raise HTTPException(status_code=404,
+                            detail=f"geo_1 or geo_2 is empty")
     north_object = north_obj(geo_1, geo_2) # geo_api.sub_main
     tz, delta = delta_time(geo_1, geo_2) # geo_api.sub_main
     extra = [{"northen object": north_object, "equal time zone": tz + delta}]
@@ -94,8 +107,6 @@ async def two_cites(geo_1: str, geo_2: str):
          response_model=List)
 async def search(search: str):
     search = "\A" + search + ".*"
-    # geo = await db["geo"].find({"$text": {"$search": search, "$language": "ru"}}).to_list(10)
-    # geo = await db["geo"].find({"$or": [{"$text": {"$search": search, "$language": "ru"}}, {"ru_name": {"$regex": search}}]}).to_list(10)
     geo = await db["geo"].find({"ru_name": {"$regex": search}}).to_list(20)
     list_ru_name = []
     for ge in geo:
