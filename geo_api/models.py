@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import Union
 
 from bson import ObjectId
 from pydantic import BaseModel, Field
@@ -12,16 +12,16 @@ class PyObjectId(ObjectId):
     @classmethod
     def validate(cls, v):
         if not ObjectId.is_valid(v):
-            raise ValueError("Invalid objectid")
+            raise ValueError('Invalid objectid')
         return ObjectId(v)
 
     @classmethod
     def __modify_schema__(cls, field_schema):
-        field_schema.update(type="string")
+        field_schema.update(type='string')
 
 
 class GeoModel(BaseModel):
-    id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
+    id: PyObjectId = Field(default_factory=PyObjectId, alias='_id')
     geo_name_id: int = Field(...)
     name: str = Field(...)
     ru_name: Union[str, None] = Field(...)
@@ -43,21 +43,22 @@ class GeoModel(BaseModel):
                                         description='datetime.tzinfo')
     mod_date: Union[str, None] = Field(title='Дата модификации',
                                        description='ГГГГ-ММ-ДД')
+
     class Config:
         allow_population_by_field_name = True
         arbitrary_types_allowed = True
         json_encoders = {ObjectId: str}
         schema_extra = {
-            "example": {
-                "_id": "6302075722b087cddd6876b0",
-                "geo_name_id": 12492934,
-                "name": "Klostova",
-                "ru_name": "Клостова",
-                "latitude": 55.63086,
-                "longitude": 37.1881100,
-                "population": 100000,
-                "dem": 192,
-                "time_zone": "Europe/Moscow",
-                "mod_date": "2022-08-04"
+            'example': {
+                '_id': '6302075722b087cddd6876b0',
+                'geo_name_id': 12492934,
+                'name': 'Klostova',
+                'ru_name': 'Клостова',
+                'latitude': 55.63086,
+                'longitude': 37.1881100,
+                'population': 100000,
+                'dem': 192,
+                'time_zone': 'Europe/Moscow',
+                'mod_date': '2022-08-04'
             }
         }

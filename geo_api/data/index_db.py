@@ -1,5 +1,3 @@
-from tkinter.tix import TEXT
-
 from pymongo import ASCENDING, TEXT, MongoClient
 
 client = MongoClient('mongodb://localhost:27017/')
