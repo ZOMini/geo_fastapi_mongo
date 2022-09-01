@@ -123,7 +123,7 @@ async def two_cites(geo_1: str, geo_2: str):
     )
 async def search(search: str):
     search = rf'\A{search}.*'
-    geo = await db['geo'].find({'ru_name': {'$regex': search}}).to_list(20)
+    geo = await db['geo'].find({'ru_name': {'$regex': search, '$options': 's'}}).to_list(20)
     list_ru_name = []
     for ge in geo:
         list_ru_name.append(ge['ru_name'])

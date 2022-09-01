@@ -20,7 +20,7 @@ GET http://127.0.0.1:8000/two_cites/?422_city_1=Гора Заслонка&city_2
 GET http://127.0.0.1:8000/two_cites/?geo_1=Гора Заслонка&geo_2=Большая или Малая
 
 ###  200
-GET http://127.0.0.1:8000/search/?search=Гора З
+GET http://127.0.0.1:8000/search/?search=Гор
 
 ###  422
 GET http://127.0.0.1:8000/search/?part_city_422=Гора Засссссс
