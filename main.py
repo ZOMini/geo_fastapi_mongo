@@ -129,7 +129,7 @@ async def search(search: str):
         list_ru_name.append(ge['ru_name'])
     list_ru_name = set(list_ru_name)
     return list_ru_name
-
+ 
 
 if __name__ == '__main__':
     uvicorn.run('main:app', host='0.0.0.0', port=8000, reload=True)
