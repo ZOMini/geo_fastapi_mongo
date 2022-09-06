@@ -20,8 +20,7 @@ class PyObjectId(ObjectId):
         field_schema.update(type='string')
 
 
-class GeoModel(BaseModel):
-    id: PyObjectId = Field(default_factory=PyObjectId, alias='_id')
+class GeoModelUpd(BaseModel):
     geo_name_id: int = Field(...)
     name: str = Field(...)
     ru_name: Union[str, None] = Field(...)
@@ -48,6 +47,27 @@ class GeoModel(BaseModel):
         allow_population_by_field_name = True
         arbitrary_types_allowed = True
         json_encoders = {ObjectId: str}
+        schema_extra = {
+            'example': {
+                'geo_name_id': 12492934,
+                'name': 'Klostova',
+                'ru_name': 'Клостова',
+                'latitude': 55.63086,
+                'longitude': 37.1881100,
+                'population': 100000,
+                'dem': 192,
+                'time_zone': 'Europe/Moscow',
+                'mod_date': '2022-08-04'
+            }
+        }
+
+
+class GeoModel(GeoModelUpd):
+
+    id: PyObjectId = Field(default_factory=PyObjectId, alias='_id')
+
+    class Config:
+        allow_population_by_field_name = True
         schema_extra = {
             'example': {
                 '_id': '6302075722b087cddd6876b0',

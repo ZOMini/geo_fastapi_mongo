@@ -24,3 +24,9 @@ GET http://127.0.0.1:8000/search/?search=Гор
 
 ###  422
 GET http://127.0.0.1:8000/search/?part_city_422=Гора Засссссс
+
+### Base CRUD
+GET http://127.0.0.1:8000/crud/
+
+### Base CRUD
+GET http://127.0.0.1:8000/crud/630366b08678a04d58af0f4b/
