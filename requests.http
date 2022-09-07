@@ -1,32 +1,32 @@
 ### объект по id - 200 !!!!!!!!!!!!
-GET  http://127.0.0.1:8000/geonameid/12492934/
+GET  http://127.0.0.1:8000/api/v1/geonameid/12492934/
 
 ### объект по id - 404 !!!!!!!!!!!!
-GET  http://127.0.0.1:8000/geonameid/124934/
+GET  http://127.0.0.1:8000/api/v1/geonameid/124934/
 
 ### 20 объектов - 200 !!!!!!!!!!!!!!!!!!!!
-GET http://127.0.0.1:8000/coordinates/?lati_min=55.1&lati_max=56.1&longi_min=37.1&longi_max=38.1&cont=20
+GET http://127.0.0.1:8000/api/v1/coordinates/?lati_min=55.1&lati_max=56.1&longi_min=37.1&longi_max=38.1&cont=20
 
 ###  Нет вариантов - 404
-GET http://127.0.0.1:8000/coordinates/?lati_min=100&lati_max=101&longi_min=100&longi_max=101&cont=20
+GET http://127.0.0.1:8000/api/v1/coordinates/?lati_min=100&lati_max=101&longi_min=100&longi_max=101&cont=20
 
 ###  200 !!!!!!!!!!!! 
-GET http://127.0.0.1:8000/two_cites/?geo_1=Гора Заслонка&geo_2=Большая
+GET http://127.0.0.1:8000/api/v1/two_cites/?geo_1=Гора Заслонка&geo_2=Большая
 
 ###  422
-GET http://127.0.0.1:8000/two_cites/?422_city_1=Гора Заслонка&city_2=Большая
+GET http://127.0.0.1:8000/api/v1/two_cites/?422_city_1=Гора Заслонка&city_2=Большая
 
 ###  404
-GET http://127.0.0.1:8000/two_cites/?geo_1=Гора Заслонка&geo_2=Большая или Малая
+GET http://127.0.0.1:8000/api/v1/two_cites/?geo_1=Гора Заслонка&geo_2=Большая или Малая
 
 ###  200
-GET http://127.0.0.1:8000/search/?search=Гор
+GET http://127.0.0.1:8000/api/v1/search/?search=Васил
 
 ###  422
-GET http://127.0.0.1:8000/search/?part_city_422=Гора Засссссс
+GET http://127.0.0.1:8000/api/v1/search/?part_city_422=Гора Засссссс
 
 ### Base CRUD
-GET http://127.0.0.1:8000/crud/
+GET http://127.0.0.1:8000/api/v1/crud/
 
 ### Base CRUD
-GET http://127.0.0.1:8000/crud/630366b08678a04d58af0f4b/
+GET http://127.0.0.1:8000/api/v1/crud/630366b08678a04d58af0f4b/

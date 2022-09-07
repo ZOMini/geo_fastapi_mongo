@@ -7,11 +7,11 @@ from crud import db
 from models import GeoModel
 from sub_geo import delta_time, north_obj
 
-geo_router = APIRouter()
+geo_router = APIRouter(tags=['Main'])
 
 
 @geo_router.get(
-    '/geonameid/{geo_name_id}/', tags=['Main'],
+    '/geonameid/{geo_name_id}/',
     response_description='Get a single geo by GeoNameID',
     response_model=GeoModel,
     responses={404: {'description': 'Geo <geo_name_id> not found'}}
@@ -26,7 +26,7 @@ async def show_geonameid(geo_name_id: int):
 
 
 @geo_router.get(
-    '/coordinates/', tags=['Main'],
+    '/coordinates/',
     response_description='Get a single geo by GeoNameID',
     response_model=List[GeoModel],
     responses={404: {'description': 'Geo on this coordinates not found'}}
@@ -48,7 +48,7 @@ async def geo_coor(lati_min: float,
 
 
 @geo_router.get(
-    '/two_cites/', tags=['Main'],
+    '/two_cites/',
     response_description='Two geo object + northen object + equal time zone',
     response_model=Union[List[GeoModel], List[Dict]],
     responses={404: {'description': 'geo_1 or geo_2 not found'}}
@@ -70,7 +70,7 @@ async def two_cites(geo_1: str, geo_2: str):
 
 
 @geo_router.get(
-    '/search/', tags=['Main'],
+    '/search/',
     response_description='List search ru name geo',
     response_model=List[GeoModel]
     )
@@ -82,4 +82,4 @@ async def search(search: str):
     for ge in geo:
         list_ru_name.append(ge['ru_name'])
     list_ru_name = set(list_ru_name)
-    return list_ru_name
+    return JSONResponse(list(list_ru_name))

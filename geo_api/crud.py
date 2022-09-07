@@ -23,7 +23,7 @@ async def create_geo(geo: GeoModel = Body(...)):
     new_geo = await db['geo'].insert_one(geo)
     created_geo = await db['geo'].find_one({'_id': new_geo.inserted_id})
     return JSONResponse(status_code=status.HTTP_201_CREATED,
-                        content=created_geo) 
+                        content=created_geo)
 
 
 @crud_router.get('/',
