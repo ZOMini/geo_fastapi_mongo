@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 
 from crud import db
 from models import GeoModel
-from sub_geo import delta_time, north_obj
+from sub_geo import RESP_200_SEARCH, RESP_200_TWO_CITES, delta_time, north_obj
 
 geo_router = APIRouter(tags=['Main'])
 
@@ -49,9 +49,9 @@ async def geo_coor(lati_min: float,
 
 @geo_router.get(
     '/two_cites/',
-    response_description='Two geo object + northen object + equal time zone',
     response_model=Union[List[GeoModel], List[Dict]],
-    responses={404: {'description': 'geo_1 or geo_2 not found'}}
+    responses={404: {'description': 'Geo_1 or geo_2 not found'},
+               200: RESP_200_TWO_CITES}
     )
 async def two_cites(geo_1: str, geo_2: str):
     geo_1 = await (db['geo'].find({'ru_name': geo_1})
@@ -71,8 +71,9 @@ async def two_cites(geo_1: str, geo_2: str):
 
 @geo_router.get(
     '/search/',
-    response_description='List search ru name geo',
-    response_model=List[GeoModel]
+    response_model=List[GeoModel],
+    responses={404: {'description': 'Geo_1 or geo_2 not found'},
+               200: RESP_200_SEARCH}
     )
 async def search(search: str):
     search = rf'\A{search}.*'

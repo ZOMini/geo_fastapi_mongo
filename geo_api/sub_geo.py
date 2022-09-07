@@ -28,3 +28,71 @@ def delta_time(city_1, city_2):
             c_2 = city_2[0]['ru_name']
             delta_time = f'В городе {c_2} время на {dt_delta} часов больше.'
     return t_z, delta_time
+
+# For schemas
+
+
+RESPONSE_200_TWO_CITES_LIST = [
+  {
+    "_id": "630366c88678a04d58b4a363",
+    "geo_name_id": 12459893,
+    "name": "Gora Zaslonka",
+    "ru_name": "Гора Заслонка",
+    "latitude": 52.5994,
+    "longitude": 105.75356,
+    "population": 0,
+    "dem": 788,
+    "time_zone": "Asia/Irkutsk",
+    "mod_date": "2022-04-20"
+  },
+  {
+    "_id": "630366b78678a04d58b0cd30",
+    "geo_name_id": 575154,
+    "name": "Bol’shaya Derevnya",
+    "ru_name": "Большая",
+    "latitude": 59.58911,
+    "longitude": 40.92052,
+    "population": 0,
+    "dem": 129,
+    "time_zone": "Europe/Moscow",
+    "mod_date": "2012-01-17"
+  },
+  {
+    "northen object": "Большая - находится севернее!",
+    "equal time zone":
+    "Временные зоны разные - В городе Большая время на 5 часов больше."
+  }
+]
+
+RESP_200_TWO_CITES = {
+            "description": "Two geo object + northen object + equal time zone",
+            "content": {
+                "application/json": {
+                    "example": RESPONSE_200_TWO_CITES_LIST
+                }
+            },
+        }
+
+RESP_200_SEARCH_LIST = [
+  "Василева",
+  "Василево",
+  "Василев Майдан",
+  "Василек",
+  "Васили",
+  "Василеостровский",
+  "Василисино",
+  "Василевичи",
+  "Василеостровский район",
+  "Василисина",
+  "Василовка",
+  "Василисово"
+]
+
+RESP_200_SEARCH = {
+            "description": "List search ru name geo",
+            "content": {
+                "application/json": {
+                    "example": RESP_200_SEARCH_LIST
+                }
+            },
+        }
