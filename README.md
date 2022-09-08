@@ -1,4 +1,4 @@
-- sudo docker-compose exec web python ./script.py
+- sudo docker-compose exec web python script.py
 
 # MongoDB with FastAPI
 
