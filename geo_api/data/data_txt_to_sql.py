@@ -12,7 +12,7 @@ db = client['geo']
 
 def run():
     print('Импортируем данные! Займет 1 минуту. Ждем 354528 объекта.')
-    df = pd.read_csv('./geo_api/data/RU.txt',
+    df = pd.read_csv('geo_api/data/RU.txt',
                      delimiter='\t',
                      usecols=var_geo.COLUMNS,
                      na_values=None,
