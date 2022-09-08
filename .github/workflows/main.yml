@@ -49,6 +49,8 @@ jobs:
           script: |
               cd geo
               sudo docker-compose stop
+              sudo docker-compose down
               sudo docker-compose rm -f web
+              sudo docker-compose rm -f mongo
               sudo docker-compose pull web
               sudo docker-compose up -d --build
