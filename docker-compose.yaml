@@ -1,0 +1,38 @@
+version: '2.2'
+
+services:
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mongopass
+    ports:
+     - "27017:27017"
+    volumes:
+      - 'mongo:/data/db'
+
+  web:
+    # build: .
+    image: zomin/geo_fastapi_mongo:v1.0
+    restart: always
+    environment: 
+      - MONGODB_CONNSTRING=mongodb://root:mongopass@mongo
+    depends_on:
+      - mongo
+    # env_file:
+    #   - ./.env 
+  
+  nginx:
+    image: nginx:1.21.3-alpine
+    restart: always
+    ports:
+      - "9004:9004"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
+
+volumes:
+  mongo:

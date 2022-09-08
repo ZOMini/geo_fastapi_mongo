@@ -6,12 +6,8 @@ client = MongoClient('mongodb://127.0.0.1:27017',
 db = client['geo']
 geo_db = db['geo']
 
-
-def run():
-    print(geo_db.count_documents({}))
-    geo_db.delete_many({})
-    print(geo_db.count_documents({}))
-
-
-if __name__ == '__main__':
-    run()
+print('Были индексы:')
+print(sorted(list(geo_db.index_information())))
+geo_db.drop_indexes()
+print('Текущие индексы:')
+print(sorted(list(geo_db.index_information())))
