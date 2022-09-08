@@ -17,7 +17,7 @@ client = moto.AsyncIOMotorClient(MONGODB_URL)
 db = client.geo
 
 crud_router = APIRouter(prefix='/crud', tags=['Base CRUD'])
- 
+
 
 @crud_router.post('/',
                   response_description='Add new geo',
