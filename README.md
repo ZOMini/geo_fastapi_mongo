@@ -1,4 +1,11 @@
-- sudo docker-compose exec web python script.py
+```
+Проект работает:
+http://130.193.37.228:9004/docs/
+```
+
+- sudo docker-compose exec web python script.py - при первом запуске(импорт данных, индексы БД).
+- requests.http - тестовые запросы.
+
 
 # MongoDB with FastAPI
 
