@@ -1,8 +1,8 @@
 import pandas as pd
 from fastapi.encoders import jsonable_encoder
-from models import GeoModel
+from geo_api.models import GeoModel
+from geo_api.var_geo import ALPHABET, COLUMNS
 from pymongo import MongoClient
-from var_geo import ALPHABET, COLUMNS
 
 client = MongoClient('mongodb://127.0.0.1:27017',
                      username='root',
