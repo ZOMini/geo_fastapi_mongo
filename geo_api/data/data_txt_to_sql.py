@@ -1,17 +1,20 @@
 import models
 import pandas as pd
 import var_geo
+from crud import MONGODB_URL
 from fastapi.encoders import jsonable_encoder
 from pymongo import MongoClient
 
-client = MongoClient('mongodb://127.0.0.1:27017',
-                     username='root',
-                     password='mongopass')
+client = MongoClient(MONGODB_URL)
+# client = MongoClient('mongodb://127.0.0.1:27017',
+#                      username='root',
+#                      password='mongopass')
 db = client['geo']
 
 
 def run():
     print('Импортируем данные! Займет 1 минуту. Ждем 354528 объекта.')
+    # './geo_api/data/RU.txt'
     df = pd.read_csv('/geo_api/data/RU.txt',
                      delimiter='\t',
                      usecols=var_geo.COLUMNS,
