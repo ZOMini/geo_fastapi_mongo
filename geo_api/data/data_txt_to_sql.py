@@ -1,7 +1,7 @@
+import models
 import pandas as pd
+import var_geo
 from fastapi.encoders import jsonable_encoder
-from geo_api.models import GeoModel
-from geo_api.var_geo import ALPHABET, COLUMNS
 from pymongo import MongoClient
 
 client = MongoClient('mongodb://127.0.0.1:27017',
@@ -14,7 +14,7 @@ def run():
     print('Импортируем данные! Займет 1 минуту. Ждем 354528 объекта.')
     df = pd.read_csv('./geo_api/data/RU.txt',
                      delimiter='\t',
-                     usecols=COLUMNS,
+                     usecols=var_geo.COLUMNS,
                      na_values=None,
                      keep_default_na=False)
     df_dict: dict = df.to_dict('index')
@@ -23,17 +23,17 @@ def run():
     for idx in df_dict.values():
         if idx['alternatenames'] is None:
             continue
-        elif not ALPHABET.isdisjoint(idx['alternatenames'].lower()):
+        elif not var_geo.ALPHABET.isdisjoint(idx['alternatenames'].lower()):
             names = str(idx['alternatenames'])
             list_name = names.split(',')
             for i in list_name:
-                if not ALPHABET.isdisjoint(i.lower()):
+                if not var_geo.ALPHABET.isdisjoint(i.lower()):
                     idx['alternatenames'] = i
                     break
         else:
             idx['alternatenames'] = None
         try:
-            city = GeoModel(
+            city = models.GeoModel(
                 geo_name_id=idx['geonameid'],
                 name=idx['name'],
                 ru_name=idx['alternatenames'],
