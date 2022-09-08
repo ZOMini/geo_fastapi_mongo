@@ -6,3 +6,4 @@ http://130.193.37.228:9004/docs/
 
 - sudo docker-compose exec web python script.py - при первом запуске(импорт данных, индексы БД).
 - requests.http - тестовые запросы.
+- http://130.193.37.228:9004/docs/ - либо тестирум так.
