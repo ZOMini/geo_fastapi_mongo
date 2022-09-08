@@ -1,8 +1,10 @@
+from crud import MONGODB_URL
 from pymongo import ASCENDING, TEXT, MongoClient
 
-client = MongoClient('mongodb://127.0.0.1:27017',
-                     username='root',
-                     password='mongopass')
+client = MongoClient(MONGODB_URL)
+# client = MongoClient('mongodb://127.0.0.1:27017',
+#                      username='root',
+#                      password='mongopass')
 db = client['geo']
 geo_db = db['geo']
 
