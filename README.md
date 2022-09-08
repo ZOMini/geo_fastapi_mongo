@@ -1,3 +1,5 @@
+- sudo docker-compose exec web python ./script.py
+
 # MongoDB with FastAPI
 
 This is a small sample project demonstrating how to build an API with [MongoDB](https://developer.mongodb.com/) and [FastAPI](https://fastapi.tiangolo.com/).

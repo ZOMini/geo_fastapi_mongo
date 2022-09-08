@@ -10,8 +10,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: mongopass
     ports:
      - "27017:27017"
-    # volumes:
-    #   - "mongo:/data/db"
+    volumes:
+      - "mongo:/data/db"
 
   web:
     # build: .
@@ -34,5 +34,5 @@ services:
     depends_on:
       - web
 
-# volumes:
-#   mongo:
+volumes:
+  mongo:
