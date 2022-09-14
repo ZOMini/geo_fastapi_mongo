@@ -76,4 +76,3 @@ async def delete_geo(id: str):
         return Response(status_code=status.HTTP_204_NO_CONTENT)
 
     raise HTTPException(status_code=404, detail=f'Geo {id} not found')
- 
