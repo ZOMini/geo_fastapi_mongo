@@ -47,7 +47,7 @@ async def show_geo(id: str):
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                         detail=f'Geo {id} not found')
-
+ 
 
 @crud_router.put('/{id}',
                  response_description='Update a Geo',
