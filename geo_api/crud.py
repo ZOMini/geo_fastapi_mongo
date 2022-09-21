@@ -9,13 +9,16 @@ from fastapi.responses import JSONResponse, Response
 from models import GeoModel, GeoModelUpd
 
 MONGODB_URL = os.environ['MONGODB_CONNSTRING']
-# MONGODB_URL = "mongodb+srv://root:exemple@mongo/mongodb?retryWrites=true&w=majority"
-# MONGODB_URL = 'mongodb://localhost:27017/mongodb?retryWrites=true&w=majority'
-# MONGODB_URL = 'mongodb://root:example@localhost:27017/mongodb?retryWrites=true&w=majority'
+# MONGODB_URL =
+# "mongodb+srv://root:exemple@mongo/mongodb?retryWrites=true&w=majority"
+# MONGODB_URL =
+# 'mongodb://localhost:27017/mongodb?retryWrites=true&w=majority'
+# MONGODB_URL =
+# 'mongodb://root:example@localhost:27017/mongodb?retryWrites=true&w=majority'
 
 client = moto.AsyncIOMotorClient(MONGODB_URL)
 db = client.geo
- 
+
 crud_router = APIRouter(prefix='/crud', tags=['Base CRUD'])
 
 
