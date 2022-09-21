@@ -15,7 +15,7 @@ MONGODB_URL = os.environ['MONGODB_CONNSTRING']
 
 client = moto.AsyncIOMotorClient(MONGODB_URL)
 db = client.geo
-
+ 
 crud_router = APIRouter(prefix='/crud', tags=['Base CRUD'])
 
 
